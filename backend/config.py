@@ -21,7 +21,7 @@ class ProviderProfile:
     env_var: str
     default_model: str
     models: tuple[str, ...]
-    kind: str = "openai_compat"   # or "anthropic" / "mock"
+    kind: str = "openai_compat"   # or "mock"
     base_url: str | None = None
     docs: str = ""
 
@@ -46,7 +46,7 @@ PROVIDERS: dict[str, ProviderProfile] = {
     ),
     "groq": ProviderProfile(
         id="groq",
-        lable="Groq",
+        label="Groq",
         env_var="GROQ_API_KEY",
         default_model="llama-3.3-70b-versatile",
         models=("llama-3.3-70b-versatile", "llama-3.1-8b-instant"),
