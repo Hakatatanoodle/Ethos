@@ -269,15 +269,15 @@ class GameMaster:
             seed=seed,
             temperature=ps.config.temperature,
         )
-        gw, key = REGISTRY.gateway_for(ps.config.provider)
-
+        
         resp: Optional[ModelResponse] = None
         err: Optional[str] = None
         started = time.perf_counter()
         try:
+            gw, key = REGISTRY.gateway_for(ps.config.provider)
             resp = await gw.generate(req, key)
         except Exception as exc:  # network, auth, parse, timeout ...
-            err = f"{type(exc).__name__}: {exc}"[:400]
+            err = f"{type(exc).__name__}: {exc}"[:400]      
 
         action = None
         if resp is not None and err is None:

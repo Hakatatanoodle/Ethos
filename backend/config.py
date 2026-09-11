@@ -44,18 +44,14 @@ PROVIDERS: dict[str, ProviderProfile] = {
         base_url="https://api.openai.com/v1",
         docs="platform.openai.com",
     ),
-    "anthropic": ProviderProfile(
-        id="anthropic",
-        label="Anthropic (Claude)",
-        env_var="ANTHROPIC_API_KEY",
-        default_model="claude-haiku-4-5-20251001",
-        models=(
-            "claude-haiku-4-5-20251001",
-            "claude-sonnet-4-6-20250620",
-            "claude-opus-4-6-202509-29",
-        ),
-        kind="anthropic",
-        docs="console.anthropic.com",
+    "groq": ProviderProfile(
+        id="groq",
+        lable="Groq",
+        env_var="GROQ_API_KEY",
+        default_model="llama-3.3-70b-versatile",
+        models=("llama-3.3-70b-versatile", "llama-3.1-8b-instant"),
+        base_url="https://api.groq.com/openai/v1",
+        docs="console.groq.com",
     ),
     "gemini": ProviderProfile(
         id="gemini",
@@ -66,14 +62,17 @@ PROVIDERS: dict[str, ProviderProfile] = {
         base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
         docs="aistudio.google.com",
     ),
-    "deepseek": ProviderProfile(
-        id="deepseek",
-        label="DeepSeek",
-        env_var="DEEPSEEK_API_KEY",
-        default_model="deepseek-chat",
-        models=("deepseek-chat", "deepseek-reasoner"),
-        base_url="https://api.deepseek.com/v1",
-        docs="platform.deepseek.com",
+    "openrouter": ProviderProfile(
+        id="openrouter",
+        label="OpenRouter",
+        env_var="OPENROUTER_API_KEY",
+        default_model="openai/gpt-4o-mini",
+        models=(
+            "openai/gpt-4o-mini",
+            "meta-llama/llama-3.3-70b-instruct",
+        ),
+        base_url="https://openrouter.ai/api/v1",
+        docs="openrouter.ai",
     ),
     "xai": ProviderProfile(
         id="xai",
