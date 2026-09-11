@@ -47,14 +47,24 @@ real keys via the dashboard **⚿ API Keys** modal, or a `.env` file
 1. **Lobby** — pick the mode (elimination / fixed rounds), the factor, the
    dynamic-rule toggles, pacing, and the combatant roster (callsign,
    provider, model id).
-2. **Begin the Game** — the referee takes over. Cards show each model's
-   private chain of thought *live* ("thinking…" spinners included), the
-   move it commits, latency and token stats, and a full per-player reasoning
-   archive.
-3. Watch the **scoreboard** update, dynamic rules get injected over the
-   arena feed, eliminations execute, and paradox rounds detonate.
-4. Pause/resume, single-step rounds, or change pacing at any time. Finished
-   matches stay in the lobby's recent-matches list.
+2. **Game Screen** — a broadcast-style opening explains the game while the
+   engine sends isolated rule-bearing prompts to all players in parallel.
+   The opening stays up until the first round is ready (plus reading time).
+3. Each buffered round opens with an announcement, gives each player the
+   floor for a public answer, then reveals the target and updated penalties.
+   Dynamic rules, eliminations and the winner have their own stage moments.
+   Scores and player status follow playback, never the ahead-of-show engine.
+4. Pause the show, advance one reveal, change playback speed, or replay from
+   the opening. These controls do not pause model computation. Returning to
+   an existing match plays its recorded events from the beginning.
+5. **Live Logs** preserves the original arena feed, scoreboard, per-player
+   reasoning archives and engine pause/resume/step controls. This view is
+   explicitly spoiler-bearing; no reasoning is shown on the Game Screen.
+
+The presentation uses the existing private round-generation calls, not an
+additional strategy-only LLM call. Public “My answer is” captions display the
+actual submitted action, not invented model dialogue; no audio is generated.
+Playback is local to each spectator and is not synchronized across browsers.
 
 ## The Beauty Contest rules
 
@@ -161,6 +171,7 @@ layer, event log, WebSockets and dashboard all work unchanged.
 
 ```bash
 .venv/bin/python backend/smoke_test.py
+node --test frontend/src/components/gamePlayback.test.js
 ```
 
 Runs a 5-player elimination match and a fixed match headlessly, asserts the

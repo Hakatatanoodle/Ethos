@@ -3,10 +3,12 @@ import { api, connectGame } from '../api.js'
 import Scoreboard from './Scoreboard.jsx'
 import EventFeed from './EventFeed.jsx'
 import PlayerCard from './PlayerCard.jsx'
+import GameScreen from './GameScreen.jsx'
 
 const AVATAR_ORDER = ['Grok', 'ChatGPT', 'Claude', 'Gemini', 'DeepSeek']
 
 export default function Arena({ gameId, onExit, onOpenSettings }) {
+  const [tab, setTab] = useState('screen')
   const [snap, setSnap] = useState(null)
   const [events, setEvents] = useState([])
   const [conn, setConn] = useState('connecting')
@@ -32,7 +34,7 @@ export default function Arena({ gameId, onExit, onOpenSettings }) {
       },
       onStatus: setConn,
     })
-    return stop
+    return () => { stop(); clearTimeout(refreshTimer.current) }
   }, [gameId])
 
   const cmd = async (c, body) => {
@@ -62,6 +64,13 @@ export default function Arena({ gameId, onExit, onOpenSettings }) {
 
   return (
     <div>
+      <nav className="view-tabs" aria-label="Arena views">
+        <button className={tab === 'screen' ? 'selected' : ''} onClick={() => setTab('screen')}>◉ Game Screen</button>
+        <button className={tab === 'logs' ? 'selected' : ''} onClick={() => setTab('logs')}>≡ Live Logs</button>
+        <span className="muted">{tab === 'screen' ? 'The spectator experience' : 'Live engine state · contains spoilers and private reasoning'}</span>
+      </nav>
+      <div hidden={tab !== 'screen'}><GameScreen snap={snap} events={events} conn={conn} onExit={onExit} /></div>
+      <div hidden={tab !== 'logs'}>
       <div className="panel" style={{ padding: '14px 20px' }}>
         <div className="stat-bar" style={{ marginBottom: 0 }}>
           <div>
@@ -146,6 +155,7 @@ export default function Arena({ gameId, onExit, onOpenSettings }) {
             </p>
           </div>
         </div>
+      </div>
       </div>
     </div>
   )

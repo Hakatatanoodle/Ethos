@@ -8,8 +8,9 @@ export default defineConfig({
   server: {
     host: '0.0.0.0',
     port: 5173,
+    allowedHosts: ['.e2b.app'],
     proxy: {
-      '/api': { target: 'http://127.0.0.1:8000', changeOrigin: true },
+      '/api': { target: 'http://127.0.0.1:8000', changeOrigin: true, ws: true },
       '/ws': { target: 'ws://127.0.0.1:8000', ws: true }
     }
   },
