@@ -244,3 +244,64 @@ label.field input, label.field select { margin-top: 5px; }
 .hint { font-size: 11px; color: var(--muted); margin-top: 6px; line-height: 1.5; }
 .sec-title { font-size: 12px; color: var(--neon); text-transform: uppercase; letter-spacing: 1.5px;
   font-family: 'Orbitron'; margin: 18px 0 10px; }
+
+/* Broadcast view: deliberately separate from the live diagnostics dashboard. */
+[hidden] { display: none !important; }
+.view-tabs { display: flex; gap: 8px; align-items: center; margin: 0 0 20px; }
+.view-tabs button { padding: 12px 20px; background: transparent; }
+.view-tabs button.selected { background: #183334; border-color: #53ded1; color: #8df5e9; }
+.view-tabs > span { margin-left: auto; font-size: 12px; }
+.broadcast { border: 1px solid #293b42; border-radius: 18px; overflow: hidden; background: #0b1218; }
+.broadcast-bar { padding: 19px 26px; display: flex; align-items: center; gap: 20px; border-bottom: 1px solid #24333a; font-size: 12px; }
+.broadcast-bar .pill { margin-left: auto; }
+.broadcast-label { font-weight: 800; letter-spacing: 2px; color: #a5d9d4; }
+.game-stage { min-height: 510px; position: relative; display: grid; place-items: center; overflow: hidden; background: radial-gradient(ellipse at 50% 70%, #153334 0%, #0b151c 60%, #0b1218 100%); padding: 44px 30px; }
+.stage-orbit { position: absolute; width: 750px; height: 750px; border: 1px solid #78ceba12; border-radius: 50%; top: 70px; box-shadow: 0 0 0 75px #78ceba05, 0 0 0 150px #78ceba04; pointer-events: none; }
+.stage-content { position: relative; text-align: center; max-width: 960px; width: 100%; animation: stage-enter .45s ease-out; }
+.stage-eyebrow { display: block; font-size: 11px; letter-spacing: 3px; font-weight: 700; color: #8da5ab; margin-bottom: 24px; }
+.stage-content h2 { font-family: Georgia, serif; font-weight: 400; font-size: clamp(40px, 5.6vw, 78px); line-height: 1.04; letter-spacing: -2px; }
+.stage-content h2 em { color: #8be6d5; font-weight: 400; }
+.stage-subtitle { font-size: 17px; color: #a6b8bf; line-height: 1.7; margin: 20px auto; max-width: 720px; }
+.intro-rules { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin: 30px 0 20px; text-align: left; }
+.intro-rules > div { border-top: 1px solid #34504e; padding-top: 16px; }
+.intro-rules b { color: #90cfbf; letter-spacing: 2px; font-size: 10px; }
+.intro-rules p { color: #b2c0c5; font-size: 13px; line-height: 1.7; margin-top: 9px; }
+.preparation { font-size: 12px; color: #88afa8; margin-top: 20px; }
+.opening-rulebook { font-size: 12px; color: #a6b8bf; line-height: 1.6; }
+.opening-rulebook summary { cursor: pointer; }
+.opening-rulebook p { text-align: left; margin: 10px; }
+.speaker-avatar { display: grid; place-items: center; margin: 0 auto 15px; width: 62px; height: 62px; border-radius: 20px; background: #254b47; border: 1px solid #69c5b8; font-size: 22px; color: #9befdf; }
+.speaker-name { font-size: 26px; font-weight: 500; }
+.answer-number { font-size: clamp(90px, 12vw, 150px); font-weight: 650; letter-spacing: -7px; color: #e5fff7; line-height: 1.05; }
+.rule-symbol { display: block; color: var(--gold); font-size: 56px; margin-bottom: 20px; }
+.stage-content h2.rule-title { font-size: clamp(30px, 4vw, 48px); letter-spacing: -1px; }
+.result-chips { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
+.result-chips > div { border: 1px solid #39534f; border-radius: 12px; min-width: 110px; padding: 16px; }
+.result-chips span { display: block; font-size: 12px; color: #aac3bf; margin-bottom: 10px; }
+.result-chips b { font-size: 24px; color: #e6efdd; }
+.stage-wait { position: absolute; bottom: 12px; color: #aac3bf; font-size: 12px; }
+.contestant-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); border-top: 1px solid #293b42; }
+.contestant { padding: 22px 20px; border-right: 1px solid #293b42; transition: background .3s; border-top: 2px solid transparent; }
+.contestant.speaking { background: #19302f; border-top-color: var(--player-color); }
+.contestant.eliminated { opacity: .4; }
+.contestant-top { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 650; }
+.contestant-initial { border-radius: 10px; color: var(--player-color); background: #ffffff08; padding: 10px; font-size: 12px; }
+.contestant small { display: block; font-size: 8px; font-weight: 500; color: #8da5ab; letter-spacing: 1px; margin-top: 6px; }
+.contestant-score { display: flex; justify-content: space-between; align-items: center; margin-top: 22px; }
+.contestant-score strong { font-size: 32px; font-weight: 500; color: var(--player-color); }
+.contestant-score > span { text-align: right; font-size: 18px; }
+.playback-controls { display: flex; align-items: center; flex-wrap: wrap; gap: 16px; padding: 18px 22px; border-top: 1px solid #293b42; }
+.playback-controls > div { display: flex; gap: 6px; }
+.playback-controls > span { font-size: 11px; margin-left: auto; }
+.playback-controls label { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #8da5ab; }
+.playback-controls select { width: auto; }
+@keyframes stage-enter { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { .stage-content { animation: none; } }
+@media (max-width: 700px) {
+  .view-tabs { flex-wrap: wrap; } .view-tabs > span { width: 100%; margin: 4px 0; }
+  .broadcast-bar { flex-wrap: wrap; padding: 16px; gap: 10px; }
+  .game-stage { min-height: 440px; padding: 36px 20px; }
+  .intro-rules { grid-template-columns: 1fr; gap: 14px; }
+  .contestant-row { grid-template-columns: repeat(2, 1fr); }
+  .playback-controls { padding: 14px; } .playback-controls button { padding: 9px; }
+}
