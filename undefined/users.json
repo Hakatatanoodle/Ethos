@@ -1,0 +1,9 @@
+[
+  {
+    "id": "dc6a0784-1558-46c1-9fb9-0c1ca6b967c3",
+    "fullName": "FN Test",
+    "email": "fn1@example.com",
+    "passwordHash": "$2a$10$xSsZZC2Cq2pypNoqOvBC..5rPC8FNQSQiXcpaLs6aKpEPvEZPBqJu",
+    "createdAt": "2026-09-12T10:04:22.332Z"
+  }
+]
